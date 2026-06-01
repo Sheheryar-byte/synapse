@@ -42,6 +42,18 @@ def send_email(to: str, subject: str, body: str = '') -> bool:
 
 Synapse reads the type annotations and docstring. The JSON schema is generated automatically — no `BaseTool`, no `{type: "function", function: {…}}` by hand.
 
+Pass tools explicitly to the agents that need them:
+
+```python
+@agent(model='gpt-4o', tools=[search_web])   # only this agent can call search_web
+async def researcher(topic: str) -> str: ...
+
+@agent(model='gpt-4o')                        # clean — no tools injected
+async def writer(draft: str) -> str: ...
+```
+
+Each agent only receives the schemas you declare. No global bleed between agents.
+
 ### `@agent` — Any model, same API
 
 ```python
@@ -137,4 +149,4 @@ pip install synapse-runtime
 ollama pull llama3
 ```
 
-MIT License · Built in public · [Issues welcome](https://github.com)
+MIT License · Built in public · [Issues welcome](https://github.com/Sheheryar-byte/synapse/issues)
