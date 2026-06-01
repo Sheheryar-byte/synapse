@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.env
+
+# Local test scripts (not part of the library)
+test_synapse_final2.py
+test_bug_fix.py
+
+# Editor
+.vscode/
+*.docx
